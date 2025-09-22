@@ -17,9 +17,9 @@
 }
 
 @layer base {
-	body {
+	/* body {
 		@apply flex flex-col box-border font-poppins antialiased;
-	}
+	} */
 
 	/* button {
 		@apply bg-violet-500 hover:bg-violet-600 focus:outline-2 focus:outline-offset-2 focus:outline-violet-500 active:bg-violet-700 cursor-pointer rounded-full text-white px-5 py-2 text-lg;

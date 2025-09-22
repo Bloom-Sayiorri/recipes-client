@@ -8,14 +8,22 @@ import Recipes from "./pages/Recipes";
 import Favorites from "./pages/Favorites";
 import About from "./pages/About";
 import Recipe from "./pages/Recipe";
+import { Toaster } from "react-hot-toast";
+// import { attachIngredientImagesToDummyRecipes } from "./utils/addImagesToIngredients";
 
 function App() {
 	const [recipes, setRecipes] = useState<TRecipe[]>([]);
-
 	useEffect(() => {
-		fetch("https://dummyjson.com/recipes")
-			.then((res) => res.json())
-			.then((data) => setRecipes(data.recipes));
+		(async function () {
+			fetch("https://dummyjson.com/recipes")
+				.then((res) => res.json())
+				.then((data) => setRecipes(data.recipes));
+		})();
+
+		// (async function () {
+		// 	setRecipes(await attachIngredientImagesToDummyRecipes());
+		// })();
+
 		// const controller = new AbortController();
 
 		// const fetchRecipes = async () => {
@@ -24,7 +32,7 @@ function App() {
 		// 			signal: controller.signal,
 		// 		});
 		// 		const json = await data.json();
-		// 		setRecipes(json);
+		// 		setRecipes(json.recipes);
 		// 	} catch (error: unknown) {
 		// 		error instanceof Error && error.name !== "AbortError"
 		// 			? console.error(error.message)
@@ -32,21 +40,20 @@ function App() {
 		// 	}
 		// };
 
-		// fetchRecipes();
+		// console.log(fetchRecipes());
 		// return () => controller.abort();
 	}, []);
 
 	return (
-		<BrowserRouter>
+		<BrowserRouter
+			future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
 			<Navbar />
-			<main className="h-screen relative font-shortstack">
+			<main className="h-screen relative font-poppins flex flex-col flex-1">
+				<Toaster position="top-right" />
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route
-						path="/recipes"
-						element={<Recipes recipes={recipes} />}
-					/>
-					<Route path="/recipes/:id" element={<Recipe />} />
+					<Route path="/recipes" element={<Recipes recipes={recipes} />} />
+					<Route path="/recipes/:id" element={<Recipe recipes={recipes} />} />
 					<Route path="/favorites" element={<Favorites />} />
 					<Route path="/about" element={<About />} />
 				</Routes>
