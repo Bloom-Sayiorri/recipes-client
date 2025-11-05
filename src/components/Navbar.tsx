@@ -17,8 +17,16 @@ export default function Navbar() {
 		setDropMenu((prevState) => !prevState);
 		{
 			dropMenu ? (
-				<nav className="bg-slate-400/50 fixed right-3 z-10 h-40 w-40 text-orange-400 block">
-					Hello
+				<nav className="bg-slate-400/50 h-40 w-40 text-orange-400 absolute">
+					{navLinks.map((link) => (
+						<li key={link.label} className="list-none group">
+							<NavLink
+								to={link.path}
+								className="text-gray-700 font-medium hover:font-medium hover:text-orange-500">
+								{link.label}
+							</NavLink>
+						</li>
+					))}
 				</nav>
 			) : (
 				<em className="text-slate-400">You need to be signed in!</em>
@@ -31,12 +39,12 @@ export default function Navbar() {
 			<h1 className="text-gray-500 text-2xl font-shortstack">
 				<span className="text-orange-500">Food</span>iezz
 			</h1>
-			<nav className="flex gap-4" role="list">
+			<nav className="hidden sm:flex sm:gap-4" role="list">
 				{navLinks.map((link) => (
 					<li key={link.label} className="list-none group">
 						<NavLink
 							to={link.path}
-							className="text-gray-700 font-medium hover:font-medium hover:text-orange-500">
+							className="text-gray-600 font-medium hover:font-medium hover:text-orange-700">
 							{link.label}
 						</NavLink>
 					</li>
@@ -47,7 +55,7 @@ export default function Navbar() {
 					// user ? <Avatar /> :
 					<UserCircleIcon className="h-9 w-9 text-gray-500" />
 				} */}
-			<div className="md:hidden">
+			<div className="block relative">
 				{dropMenu ? (
 					// <Bars3Icon
 					// 	className="h-7 w-7 text-gray-500 cursor-pointer"

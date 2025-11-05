@@ -17,9 +17,16 @@
 }
 
 @layer base {
-	/* body {
-		@apply flex flex-col box-border font-poppins antialiased;
+	/* * {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
 	} */
+
+	body {
+		@apply w-full;
+		/* @apply flex flex-col box-border font-poppins antialiased; */
+	}
 
 	/* button {
 		@apply bg-violet-500 hover:bg-violet-600 focus:outline-2 focus:outline-offset-2 focus:outline-violet-500 active:bg-violet-700 cursor-pointer rounded-full text-white px-5 py-2 text-lg;
@@ -28,7 +35,11 @@
 
 @layer utilities {
 	.active {
-		@apply text-orange-500 underline decoration-2 decoration-orange-500;
+		@apply text-orange-500;
+	}
+
+	.reset * {
+		all: revert;
 	}
 }
 

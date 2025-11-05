@@ -3,19 +3,19 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import type { TRecipe } from "./types/types";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./pages/Home";
 import Recipes from "./pages/Recipes";
 import Favorites from "./pages/Favorites";
 import About from "./pages/About";
 import Recipe from "./pages/Recipe";
+import Home from "./pages/Home";
 import { Toaster } from "react-hot-toast";
 // import { attachIngredientImagesToDummyRecipes } from "./utils/addImagesToIngredients";
 
-function App() {
+export default function App() {
 	const [recipes, setRecipes] = useState<TRecipe[]>([]);
 	useEffect(() => {
 		(async function () {
-			fetch("https://dummyjson.com/recipes")
+			fetch("https://dummyjson.com/recipes?limit=50")
 				.then((res) => res.json())
 				.then((data) => setRecipes(data.recipes));
 		})();
@@ -49,9 +49,9 @@ function App() {
 			future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
 			<Navbar />
 			<main className="h-screen relative font-poppins flex flex-col flex-1">
-				<Toaster position="top-right" />
+				<Toaster position="top-right" reverseOrder={false} />
 				<Routes>
-					<Route path="/" element={<Home />} />
+					<Route path="/" element={<Home recipes={recipes} />} />
 					<Route path="/recipes" element={<Recipes recipes={recipes} />} />
 					<Route path="/recipes/:id" element={<Recipe recipes={recipes} />} />
 					<Route path="/favorites" element={<Favorites />} />
@@ -62,6 +62,3 @@ function App() {
 		</BrowserRouter>
 	);
 }
-
-export default App;
-
