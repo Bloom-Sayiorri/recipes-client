@@ -4,15 +4,9 @@ export default function About() {
 			<h2 className="bg-clip-text text-transparent bg-linear-to-r from-orange-300 via-orange-400 to-orange-600 text-4xl text-center">
 				About
 			</h2>
-			<div className="flex justify-center items-center h-full gap-3">
-				<img
-					src={"/sharing.jpg"}
-					alt=""
-					height={800}
-					width={600}
-					className="rounded object-cover"
-				/>
-				<section className="w-[55%]">
+			<div className="flex flex-col h-full gap-3 sm:flex-row sm:justify-center sm:items-center">
+				<img src={"/sharing.jpg"} alt="cooking" height={100} width={500} className="rounded object-cover" />
+				<section className="px-3 mb-3 sm:w-[20%]">
 					<h3 className="text-gray-500 text-3xl mb-2">
 						Welcome to <span className="text-orange-500">Food</span>iezz 🍴
 					</h3>
@@ -25,4 +19,7 @@ export default function About() {
 			</div>
 		</main>
 	);
+
+
+
 }
