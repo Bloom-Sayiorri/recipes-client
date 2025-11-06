@@ -1,7 +1,7 @@
 import Search from "../components/Search";
 import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import type { TRecipe } from "../types/types";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Home({ recipes }: { recipes: TRecipe[] }) {

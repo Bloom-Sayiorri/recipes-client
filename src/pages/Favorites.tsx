@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import type { TRecipe } from "../types/types";
-import sadgif from "../assets/sadgif.gif";
 export default function Favorites() {
 	const [favorites, setFavorites] = useState<TRecipe[]>([]);
 
