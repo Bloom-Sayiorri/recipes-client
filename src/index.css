@@ -1,8 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Short+Stack&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Oldenburg&display=swap");
 
 @import "tailwindcss";
 
@@ -10,36 +8,19 @@
 	/* --color-bg: #000; */
 	--breakpoint-xs: 20rem;
 	--font-poppins: Poppins, sans-serif;
-	--font-comingsoon: Coming Soon, cursive;
 	--font-shortstack: Short Stack, cursive;
 	--font-breeserif: Bree Serif, serif;
-	--font-oldenburg: Oldenburg, serif;
 }
 
 @layer base {
-	/* * {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-	} */
-
-	body {
-		@apply w-full;
-		/* @apply flex flex-col box-border font-poppins antialiased; */
+	* {
+		@apply p-0 m-0 box-border;
 	}
-
-	/* button {
-		@apply bg-violet-500 hover:bg-violet-600 focus:outline-2 focus:outline-offset-2 focus:outline-violet-500 active:bg-violet-700 cursor-pointer rounded-full text-white px-5 py-2 text-lg;
-	} */
 }
 
 @layer utilities {
 	.active {
 		@apply text-orange-500;
-	}
-
-	.reset * {
-		all: revert;
 	}
 }
 

@@ -79,10 +79,11 @@ export default function Recipes({ recipes }: { recipes: TRecipe[] }) {
 		);
 	});
 
-	if (!recipes) return <Loading text="Fexthing recipes..." />;
+	if (!recipes || recipes.length === 0) return <Loading text="Fexthing recipes..." />;
+	if (!recipes?.length) return <p className="text-center text-gray-500">No recipes found.</p>;
 
 	return (
-		<main className="mx-3 mt-[4rem] font-shortstack">
+		<main className="mx-3 mt-[1rem] font-shortstack">
 			<h2 className="bg-clip-text text-transparent bg-linear-to-r from-orange-50 via-orange-400 to-orange-800 text-4xl text-center mb-3">
 				Recipes
 			</h2>
@@ -92,4 +93,3 @@ export default function Recipes({ recipes }: { recipes: TRecipe[] }) {
 		</main>
 	);
 }
-

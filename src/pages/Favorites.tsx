@@ -12,7 +12,7 @@ export default function Favorites() {
 	}, []);
 	console.log(favorites);
 	return (
-		<main className="mx-3 mt-[4rem] h-full">
+		<main className="mx-3 mt-[1rem] h-full font-shortstack">
 			<h2 className="bg-clip-text text-transparent bg-linear-to-r from-orange-50 via-orange-400 to-orange-800 text-4xl text-center mb-3">
 				Favorites
 			</h2>

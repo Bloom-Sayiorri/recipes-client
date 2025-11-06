@@ -45,20 +45,21 @@ export default function App() {
 	}, []);
 
 	return (
-		<BrowserRouter
-			future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
-			<Navbar />
-			<main className="h-screen relative font-poppins flex flex-col flex-1">
+		<BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+			<main className="h-screen relative font-poppins flex flex-col">
 				<Toaster position="top-right" reverseOrder={false} />
-				<Routes>
-					<Route path="/" element={<Home recipes={recipes} />} />
-					<Route path="/recipes" element={<Recipes recipes={recipes} />} />
-					<Route path="/recipes/:id" element={<Recipe recipes={recipes} />} />
-					<Route path="/favorites" element={<Favorites />} />
-					<Route path="/about" element={<About />} />
-				</Routes>
+				<Navbar />
+				<div className="grow">
+					<Routes>
+						<Route path="/" element={<Home recipes={recipes} />} />
+						<Route path="/recipes" element={<Recipes recipes={recipes} />} />
+						<Route path="/recipes/:id" element={<Recipe recipes={recipes} />} />
+						<Route path="/favorites" element={<Favorites />} />
+						<Route path="/about" element={<About />} />
+					</Routes>
+				</div>
+				<Footer />
 			</main>
-			<Footer />
 		</BrowserRouter>
 	);
 }

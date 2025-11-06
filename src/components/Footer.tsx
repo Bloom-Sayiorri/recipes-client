@@ -2,13 +2,12 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import {
 	FaInstagram,
-	FaTwitterSquare,
 	FaPinterest,
 	FaFacebook,
-	FaLinkedin,
 } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import toast from "react-hot-toast";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
 	const [email, setEmail] = useState<string>("");
@@ -42,9 +41,7 @@ export default function Footer() {
 	return (
 		<footer className="bg-slate-100 mt-auto flex flex-col sm:flex-row gap-2 items-center justify-around p-6">
 			<div className="flex flex-col gap-4 items-start">
-				<p className="font-bold text-2xl underline decoration-2 decoration-orange-400">
-					Sign up for our newsletter!
-				</p>
+				<p className="font-bold text-2xl underline decoration-2 decoration-orange-400">Sign up for our newsletter!</p>
 				<form
 					// action="https://getform.io/f/bxoznmwa"
 					// method="POST"
@@ -68,50 +65,37 @@ export default function Footer() {
 					</button>
 				</form>
 				<div className="flex gap-3">
-					<NavLink to="" className="">
+					<NavLink to="https://www.instagram.com/" target="_blank" className="">
 						<FaInstagram className="rounded-full h-6 w-6" />
 					</NavLink>
-					<NavLink to="" className="">
-						<FaTwitterSquare className="rounded-full h-6 w-6" />
+					<NavLink to="https://www.x.com" target="_blank" className="">
+						<FaXTwitter className="rounded-full h-6 w-6" />
 					</NavLink>
-					<NavLink to="" className="">
+					<NavLink to="https://www.pinterest.com" target="_blank" className="">
 						<FaPinterest className="rounded-full h-6 w-6" />
 					</NavLink>
-					<NavLink to="" className="">
+					<NavLink to="https://www.facebook.com" target="_blank" className="">
 						<FaFacebook className="rounded-full h-6 w-6" />
-					</NavLink>
-					<NavLink to="" className="">
-						<FaLinkedin className=" h-6 w-6" />
 					</NavLink>
 				</div>
 			</div>
 			<div className="flex flex-col sm:flex-row gap-2 items-start justify-around w-full">
 				<div className="flex flex-col">
-					<h3 className="text-xl font-medium underline decoration-2 decoration-orange-400">
-						About
-					</h3>
+					<h3 className="text-xl font-medium underline decoration-2 decoration-orange-400">About</h3>
+					<NavLink to="/home" className="">
+						Home
+					</NavLink>
 					<NavLink to="/about" className="">
 						About
 					</NavLink>
-					<NavLink to="/contact" className="">
-						Contact
-					</NavLink>
-					<NavLink to="/profile" className="">
-						Profile
-					</NavLink>
 				</div>
 				<div className="flex flex-col">
-					<h3 className="text-xl font-medium underline decoration-2 decoration-orange-400">
-						Account
-					</h3>
+					<h3 className="text-xl font-medium underline decoration-2 decoration-orange-400">Account</h3>
 					<NavLink to="/recipes" className="">
 						Recipes
 					</NavLink>
 					<NavLink to="/favorites" className="">
 						Favorites
-					</NavLink>
-					<NavLink to="/settings" className="">
-						Settings
 					</NavLink>
 				</div>
 			</div>

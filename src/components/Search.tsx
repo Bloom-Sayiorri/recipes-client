@@ -10,7 +10,7 @@ export default function Search() {
 		setSearch(e.target.value);
 	};
 
-	const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+	const handleClick = () => {
 		console.log("clicked");
 	};
 
