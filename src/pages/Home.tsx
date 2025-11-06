@@ -20,6 +20,21 @@ export default function Home({ recipes }: { recipes: TRecipe[] }) {
 		navigate(`/recipes/${id}`)
 	};
 
+	const favRecipes = favorites.map((fav: TRecipe) => (
+		<li key={fav.id} className="list-none w-38 flex flex-col mt-4 mx-2">
+			<img src={fav.image} alt={fav.name} height={30} width={0} className="object-cover rounded-md w-full h-3/4" />
+			<div className="text-wrap">
+				<p className="text-orange-400 text-xs">{fav.name}</p>
+				<ArrowRightIcon
+					className="h-5 w-5 text-black cursor-pointer"
+					onClick={() => {
+						navigate("/favorites");
+					}}
+				/>
+			</div>
+		</li>
+	));
+
 	return (
 		<main className="flex flex-col">
 			<div className="relative bg-slate-300/50 w-full">
@@ -40,23 +55,15 @@ export default function Home({ recipes }: { recipes: TRecipe[] }) {
 			<div className="flex justify-center w-full mt-[-1.7rem] z-50">
 				<Search />
 			</div>
-			<div className="flex flex-col px-4 mt-2">
+			<div className="flex flex-col px-4 mb-6">
 				<section className="flex justify-between items-center w-full">
 					<h3 className="font-breeserif text-3xl underline decoration-orange-400">Your Favorites</h3>
 					<NavLink to="/recipes" className="text-orange-400 flex items-center gap-1 text-xl font-breeserif font-bold">
 						See More <ArrowRightIcon className="h-6 w-6 text-black" />
 					</NavLink>
 				</section>
-				<section className="flex w-40 h-40 gap-2 mt-2">
-					{favorites.map((fav: TRecipe) => (
-						<li key={fav.id} className="list-none w-full flex flex-col">
-							<img src={fav.image} alt={fav.name} height={80} width={160} className="object-cover rounded-md" />
-							<div className="flex items-center justify-between">
-								<p className="text-orange-400 text-xs">{fav.name}</p>
-								<ArrowRightIcon className="h-5 w-5 text-black cursor-pointer" onClick={() => {navigate("/favorites")}}/>
-							</div>
-						</li>
-					))}
+				<section className="flex items-center w-full h-40 mt-2">
+					{favorites.length !== 0 && favorites !== null ? favRecipes : <p>Your favorite recipes will be displayed here 😊</p>}
 				</section>
 			</div>
 			<div className="">
@@ -64,4 +71,5 @@ export default function Home({ recipes }: { recipes: TRecipe[] }) {
 			</div>
 		</main>
 	);
+
 }
