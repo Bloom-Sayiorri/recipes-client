@@ -26,12 +26,4 @@ dist-ssr
 .env
 .github
 
-# src/pages/About.tsx
-# src/pages/Form.tsx
-# src/pages/Home.tsx
-# src/pages/Login.tsx
-# src/pages/Signup.tsx
-
-# src/context
-# src/hooks
-# src/services
+*.txt

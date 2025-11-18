@@ -9,7 +9,6 @@ import About from "./pages/About";
 import Recipe from "./pages/Recipe";
 import Home from "./pages/Home";
 import { Toaster } from "react-hot-toast";
-// import { attachIngredientImagesToDummyRecipes } from "./utils/addImagesToIngredients";
 
 export default function App() {
 	const [recipes, setRecipes] = useState<TRecipe[]>([]);
@@ -19,29 +18,6 @@ export default function App() {
 				.then((res) => res.json())
 				.then((data) => setRecipes(data.recipes));
 		})();
-
-		// (async function () {
-		// 	setRecipes(await attachIngredientImagesToDummyRecipes());
-		// })();
-
-		// const controller = new AbortController();
-
-		// const fetchRecipes = async () => {
-		// 	try {
-		// 		const data = await fetch("https://dummyjson.com/recipes", {
-		// 			signal: controller.signal,
-		// 		});
-		// 		const json = await data.json();
-		// 		setRecipes(json.recipes);
-		// 	} catch (error: unknown) {
-		// 		error instanceof Error && error.name !== "AbortError"
-		// 			? console.error(error.message)
-		// 			: "No recipes";
-		// 	}
-		// };
-
-		// console.log(fetchRecipes());
-		// return () => controller.abort();
 	}, []);
 
 	return (
@@ -49,7 +25,7 @@ export default function App() {
 			<main className="h-screen relative font-poppins flex flex-col">
 				<Toaster position="top-right" reverseOrder={false} />
 				<Navbar />
-				<div className="grow">
+				<div className="grow mt-8">
 					<Routes>
 						<Route path="/" element={<Home recipes={recipes} />} />
 						<Route path="/recipes" element={<Recipes recipes={recipes} />} />

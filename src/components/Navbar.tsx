@@ -18,14 +18,14 @@ export default function Navbar() {
 	};
 
 	return (
-		<header className="bg-stone-100/70 flex justify-between items-center p-2 shadow-md top-0 z-2 w-full relative">
-			<h1 className="text-gray-500 text-2xl font-shortstack">
-				<span className="text-orange-500">Food</span>iezz
-			</h1>
+		<header className="bg-gradient-to-r from-orange-50 to-orange-100/40 backdrop-blur-sm flex justify-between items-center p-2.5 shadow-md fixed top-0 w-full z-50">
+			<NavLink to="/" className="text-gray-500 text-2xl font-shortstack flex">
+				<img src="/foodiez.png" alt="logo" height={0} width={115} className="object-cover h-[40px]" />
+			</NavLink>
 			<nav className="hidden sm:flex sm:gap-4" role="list">
 				{navLinks.map((link) => (
 					<li key={link.label} className="list-none group">
-						<NavLink to={link.path} className="text-gray-600 font-medium hover:font-medium hover:text-orange-700">
+						<NavLink to={link.path} className="text-gray-600 text-xl font-breeserif hover:font-medium hover:text-orange-700">
 							{link.label}
 						</NavLink>
 					</li>
@@ -35,10 +35,6 @@ export default function Navbar() {
 			{/* {user ? <Avatar /> : <UserCircleIcon className="h-9 w-9 text-gray-500" />} */}
 			<div className="block">
 				{dropMenu ? (
-					// <Bars3Icon
-					// 	className="h-7 w-7 text-gray-500 cursor-pointer"
-					// 	onClick={handleDropMenu}
-					// />
 					<XMarkIcon
 						className="h-9 w-9 text-gray-500 cursor-pointer"
 						onClick={handleDropMenu}

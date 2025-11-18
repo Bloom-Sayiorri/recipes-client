@@ -40,7 +40,7 @@ export default function Recipes({ recipes }: { recipes: TRecipe[] }) {
 			<li
 				key={recipe.id}
 				aria-label="Recipe list"
-				className="border-none rounded-lg bg-orange-200 mb-3 shadow-[0_3px_3px_1px_rgba(0,0,0,0.25)]">
+				className="border-none rounded-lg mb-3 shadow-[0_3px_3px_1px_rgba(0,0,0,0.25)]">
 				<article className="relative flex flex-col h-full sm:h-3/4 md:h-[70%]">
 					{isFavorited ? (
 						<FcLike
@@ -58,15 +58,14 @@ export default function Recipes({ recipes }: { recipes: TRecipe[] }) {
 						/>
 					)}
 
-					<img
-						src={recipe.image}
-						alt={recipe.name}
-						className="object-cover rounded-t-lg w-full sm:object-cover"
-					/>
+					<img src={recipe.image} alt={recipe.name} className="object-cover rounded-t-lg w-full sm:object-cover" />
 					<section className="text-slate-600/80 flex flex-col justify-center items-center font-[500]">
-						<p className="text-base text-center lg:text-lg">{recipe.name}</p>
-						<p className="text-[.99rem]">{recipe.cuisine}</p>
-						<p className="text-sm">{"⭐".repeat(Math.round(recipe.rating))}</p>
+						<p className="text-base text-center sm:text-xl">{recipe.name}</p>
+						<p className="text-[.99rem] sm:text-lg">{recipe.cuisine}</p>
+						<div className="flex items-center justify-center gap-2">
+							<p className="text-sm">{"⭐".repeat(Math.round(recipe.rating))}</p>
+							<p>{recipe.rating?.toFixed(1)}</p>
+						</div>
 						<NavLink
 							to={`/recipes/${recipe.id}`}
 							onClick={() => console.log()}
@@ -79,17 +78,15 @@ export default function Recipes({ recipes }: { recipes: TRecipe[] }) {
 		);
 	});
 
-	if (!recipes || recipes.length === 0) return <Loading text="Fexthing recipes..." />;
+	if (!recipes || recipes.length === 0) return <Loading text="Fetching recipes..." />;
 	if (!recipes?.length) return <p className="text-center text-gray-500">No recipes found.</p>;
 
 	return (
-		<main className="mx-3 mt-[1rem] font-shortstack">
-			<h2 className="bg-clip-text text-transparent bg-linear-to-r from-orange-50 via-orange-400 to-orange-800 text-4xl text-center mb-3">
+		<main className="mx-3 py-10 font-shortstack">
+			<h2 className="text-center text-4xl font-bold mb-8 bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 bg-clip-text text-transparent drop-shadow-lg">
 				Recipes
 			</h2>
-			<ul className="grid grid-cols-2 gap-5 sm:grid-cols-2 sm:gap-3 md:grid-cols-3 lg:grid-cols-4">
-				{recipesList}
-			</ul>
+			<ul className="grid grid-cols-2 gap-5 sm:grid-cols-2 sm:gap-3 md:grid-cols-3 lg:grid-cols-4">{recipesList}</ul>
 		</main>
 	);
 }
